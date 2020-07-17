@@ -427,6 +427,11 @@
               <FileType>1</FileType>
               <FilePath>../Src/stm32f4xx_hal_timebase_tim.c</FilePath>
             </File>
+            <File>
+              <FileName>httpserver-netconn.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\httpserver-netconn.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

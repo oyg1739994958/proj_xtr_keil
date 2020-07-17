@@ -22,6 +22,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "lwip.h"
+#include "httpserver-netconn.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -250,6 +251,7 @@ void StartDefaultTask(void *argument)
   /* init code for LWIP */
   MX_LWIP_Init();
   /* USER CODE BEGIN 5 */
+	http_server_netconn_init();
   /* Infinite loop */
   for(;;)
   {

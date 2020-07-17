@@ -89,3 +89,4 @@ stm32f4dis-eth\main.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h
 stm32f4dis-eth\main.o: ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h
 stm32f4dis-eth\main.o: ../Inc/ethernetif.h
 stm32f4dis-eth\main.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h
+stm32f4dis-eth\main.o: ../Inc/httpserver-netconn.h
