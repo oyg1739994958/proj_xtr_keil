@@ -36,6 +36,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define LAN8720_PHY_ADDRESS           0x00 
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -60,6 +62,7 @@ const osThreadAttr_t defaultTask_attributes = {
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_ETH_Init(void);
 void StartDefaultTask(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -99,10 +102,12 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  if (HAL_ETH_Init(&heth1) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	
+	HAL_GPIO_WritePin(PHY_RST_GPIO_Port, PHY_RST_Pin, GPIO_PIN_RESET);
+	osDelay(1);
+	HAL_GPIO_WritePin(PHY_RST_GPIO_Port, PHY_RST_Pin, GPIO_PIN_SET);
+	osDelay(1);
+	MX_ETH_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -198,7 +203,6 @@ void SystemClock_Config(void)
   */
 static void MX_GPIO_Init(void)
 {
-  volatile uint32_t i;
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
@@ -229,10 +233,33 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-  HAL_GPIO_WritePin(PHY_RST_GPIO_Port, PHY_RST_Pin, GPIO_PIN_RESET);
-  for (i = 0; i < 20000; i++);
-  HAL_GPIO_WritePin(PHY_RST_GPIO_Port, PHY_RST_Pin, GPIO_PIN_SET);
-  for (i = 0; i < 20000; i++);
+}
+
+static void MX_ETH_Init(void)
+{
+	 uint8_t MACAddr[6] ;
+	 heth1.Instance = ETH;
+	 heth1.Init.AutoNegotiation = ETH_AUTONEGOTIATION_ENABLE;
+	 heth1.Init.Speed = ETH_SPEED_100M;
+	 heth1.Init.DuplexMode = ETH_MODE_FULLDUPLEX;
+	 heth1.Init.PhyAddress = LAN8720_PHY_ADDRESS;
+	 MACAddr[0] = 0x02;
+	 MACAddr[1] = 0x80;
+	 MACAddr[2] = 0xE1;
+	 MACAddr[3] = 0x12;
+	 MACAddr[4] = 0x65;
+	 MACAddr[5] = 0x98;
+	 heth1.Init.MACAddr = &MACAddr[0];
+	 heth1.Init.RxMode = ETH_RXINTERRUPT_MODE;
+	 heth1.Init.ChecksumMode = ETH_CHECKSUM_BY_HARDWARE;
+	 heth1.Init.MediaInterface = ETH_MEDIA_INTERFACE_RMII;
+	 /* USER CODE BEGIN MACADDRESS */
+	 
+	 /* USER CODE END MACADDRESS */
+ if (HAL_ETH_Init(&heth1) != HAL_OK)
+ {
+    Error_Handler();
+ }
 }
 
 /* USER CODE BEGIN 4 */
