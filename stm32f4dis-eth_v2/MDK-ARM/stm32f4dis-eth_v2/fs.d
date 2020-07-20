@@ -49,3 +49,4 @@ stm32f4dis-eth_v2\fs.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h
 stm32f4dis-eth_v2\fs.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/apps/fs.h
 stm32f4dis-eth_v2\fs.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/err.h
 stm32f4dis-eth_v2\fs.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+stm32f4dis-eth_v2\fs.o: ../Middlewares/Third_Party/LwIP/src/apps/http/fsdata.c
