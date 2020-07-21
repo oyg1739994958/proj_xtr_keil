@@ -98,7 +98,7 @@ int main(void)
 
 #ifdef USE_DHCP
   /* Start DHCPClient */
-  xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 2, NULL,DHCP_TASK_PRIO, NULL);
+  xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 4, NULL,DHCP_TASK_PRIO, NULL);
 #endif
     
   /* Start toogleLed4 task : Toggle LED4  every 250ms */
