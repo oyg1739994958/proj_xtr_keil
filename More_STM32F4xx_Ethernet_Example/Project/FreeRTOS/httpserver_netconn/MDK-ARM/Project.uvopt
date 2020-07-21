@@ -164,9 +164,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>101</LineNumber>
+          <LineNumber>135</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134218314</Address>
+          <Address>134218380</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -175,39 +175,23 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\src\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Project\../src/main.c\101</Expression>
+          <Expression>\\Project\../src/main.c\135</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
           <LineNumber>584</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134253782</Address>
+          <Address>134254158</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\..\..\..\Utilities\lwip_v1.3.2\src\core\dhcp.c</Filename>
+          <Filename>E:\Workspace\CURRENT\refine\More_STM32F4xx_Ethernet_Example\Utilities\lwip_v1.3.2\src\core\dhcp.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Project\../../../../Utilities/lwip_v1.3.2/src/core/dhcp.c\584</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>135</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\src\main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>
@@ -257,7 +241,7 @@
         <aLa>0</aLa>
         <aPa1>0</aPa1>
         <AscS4>0</AscS4>
-        <aSer4>0</aSer4>
+        <aSer4>1</aSer4>
         <StkLoc>0</StkLoc>
         <TrcWin>0</TrcWin>
         <newCpu>0</newCpu>
