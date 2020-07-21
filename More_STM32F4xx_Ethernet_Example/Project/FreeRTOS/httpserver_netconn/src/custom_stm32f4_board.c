@@ -51,7 +51,7 @@ NVIC_InitTypeDef   NVIC_InitStructure;
 
 
 
-void STM_CUSTOM_COMInit(COM_TypeDef CUSTOM_COM, USART_InitTypeDef* USART_InitStruct)
+void STM_CUSTOM_COMInit(CUSTOM_NO_COM_TypeDef CUSTOM_COM, USART_InitTypeDef* USART_InitStruct)
 {
   GPIO_InitTypeDef GPIO_InitStructure;
 

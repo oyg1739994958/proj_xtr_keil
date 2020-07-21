@@ -49,6 +49,8 @@
 #include "tcpip.h"
 #include "httpserver-netconn.h"
 
+#include "custom_stm32f4_board.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 
@@ -61,12 +63,25 @@
 /*--------------- Tasks Priority -------------*/
 #define DHCP_TASK_PRIO   ( tskIDLE_PRIORITY + 2 )      
 #define LED_TASK_PRIO    ( tskIDLE_PRIORITY + 1 )
+#define PRINTF_TASK_PRIO    ( tskIDLE_PRIORITY + 1 )
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+USART_InitTypeDef USART_InitStructure;
+
 /* Private function prototypes -----------------------------------------------*/
+						
+#ifdef __GNUC__
+  /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
+     set to 'Yes') calls __io_putchar() */
+  #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+  #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
+  
 void LCD_LED_Init(void);
 void ToggleLed4(void * pvParameters);
+void Printf_task(void * pvParameters);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -84,8 +99,27 @@ int main(void)
        system_stm32f4xx.c file
      */
 
+  /* USARTx configured as follow:
+        - BaudRate = 115200 baud  
+        - Word Length = 8 Bits
+        - One Stop Bit
+        - No parity
+        - Hardware flow control disabled (RTS and CTS signals)
+        - Receive and transmit enabled
+  */
+  USART_InitStructure.USART_BaudRate = 115200;
+  USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+  USART_InitStructure.USART_StopBits = USART_StopBits_1;
+  USART_InitStructure.USART_Parity = USART_Parity_No;
+  USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+  USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	
   /*Initialize LCD and Leds */ 
   LCD_LED_Init();
+	
+  /*Initialize Serial COM */ 
+  STM_CUSTOM_COMInit(CUSTOM_NO_COM1, &USART_InitStructure);
+  printf("\n\rSerial communication complete!\n\r");
   
   /* configure Ethernet (GPIOs, clocks, MAC, DMA) */ 
   ETH_BSP_Config();
@@ -103,6 +137,9 @@ int main(void)
     
   /* Start toogleLed4 task : Toggle LED4  every 250ms */
   xTaskCreate(ToggleLed4, "LED4", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
+	
+  /* Start custom task : printf */
+  xTaskCreate(Printf_task, "Printf", configMINIMAL_STACK_SIZE * 4, NULL, PRINTF_TASK_PRIO, NULL);
   
   /* Start scheduler */
   vTaskStartScheduler();
@@ -110,6 +147,25 @@ int main(void)
   /* We should never get here as control is now taken by the scheduler */
   for( ;; );
 
+}
+
+/**
+  * @brief  custom printf task
+  * @param  pvParameters not used
+  * @retval None
+  */
+void Printf_task(void * pvParameters)
+{
+  int ch;
+  for ( ;; ) {
+    
+    while (USART_GetFlagStatus(CUSTOM_COM1, USART_FLAG_RXNE) == RESET);
+  	
+    ch = USART_ReceiveData(CUSTOM_COM1);
+	  
+    printf("%c", ch&0xff);    
+
+  }
 }
 
 /**
@@ -155,6 +211,18 @@ void LCD_LED_Init(void)
   LCD_DisplayStringLine(Line2, (uint8_t*)MESSAGE3);
   LCD_DisplayStringLine(Line3, (uint8_t*)MESSAGE4); 
 #endif
+}
+
+PUTCHAR_PROTOTYPE
+{
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART */
+  USART_SendData(EVAL_COM1, (uint8_t) ch);
+	  
+  /* Loop until the end of transmission */
+  while (USART_GetFlagStatus(EVAL_COM1, USART_FLAG_TC) == RESET);
+					 
+  return ch;
 }
 
 #ifdef  USE_FULL_ASSERT

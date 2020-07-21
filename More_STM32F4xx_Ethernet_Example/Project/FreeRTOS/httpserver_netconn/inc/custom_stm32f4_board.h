@@ -29,6 +29,11 @@
 #include "stm32f4xx.h"
 #include "stm32f4_discovery.h"
 
+typedef enum 
+{
+  CUSTOM_NO_COM1 = 0,
+} CUSTOM_NO_COM_TypeDef; 
+
 #define CUSTOM_COMn                             1
 /**
  * @brief Definition for COM port1, connected to USART1
@@ -60,7 +65,7 @@
 #define CUSTOM_COM1_RX_DMA_CHANNEL         DMA_Channel_4
 
 
-void STM_CUSTOM_COMInit(COM_TypeDef COM, USART_InitTypeDef* USART_InitStruct);
+void STM_CUSTOM_COMInit(CUSTOM_NO_COM_TypeDef CUSTOM_COM, USART_InitTypeDef* USART_InitStruct);
 
 
 #endif /* __STM32F4_DISCOVERY_H */
