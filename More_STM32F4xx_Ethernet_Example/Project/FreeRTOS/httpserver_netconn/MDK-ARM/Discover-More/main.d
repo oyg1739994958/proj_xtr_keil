@@ -76,3 +76,4 @@
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h
 .\discover-more\main.o: ..\inc\httpserver-netconn.h
+.\discover-more\main.o: ..\inc\custom_stm32f4_board.h

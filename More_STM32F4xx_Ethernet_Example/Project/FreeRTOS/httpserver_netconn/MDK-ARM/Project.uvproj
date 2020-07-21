@@ -456,6 +456,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\httpserver-netconn.c</FilePath>
             </File>
+            <File>
+              <FileName>custom_stm32f4_board.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\custom_stm32f4_board.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

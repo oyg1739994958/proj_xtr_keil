@@ -47,7 +47,7 @@ const uint16_t CUSTOM_COM_TX_AF[CUSTOM_COMn] = {CUSTOM_COM1_TX_AF};
  
 const uint16_t CUSTOM_COM_RX_AF[CUSTOM_COMn] = {CUSTOM_COM1_RX_AF};
 
-NVIC_InitTypeDef   NVIC_InitStructure;
+NVIC_InitTypeDef   CUSTOM_NVIC_InitStructure;
 
 
 
@@ -77,7 +77,7 @@ void STM_CUSTOM_COMInit(CUSTOM_NO_COM_TypeDef CUSTOM_COM, USART_InitTypeDef* USA
 
   GPIO_InitStructure.GPIO_Pin = CUSTOM_COM_TX_PIN[CUSTOM_COM];
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_Init(COM_TX_PORT[CUSTOM_COM], &GPIO_InitStructure);
+  GPIO_Init(CUSTOM_COM_TX_PORT[CUSTOM_COM], &GPIO_InitStructure);
 
   /* Configure USART Rx as alternate function  */
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;

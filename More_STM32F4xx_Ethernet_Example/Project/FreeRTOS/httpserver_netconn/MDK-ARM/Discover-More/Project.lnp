@@ -6,6 +6,7 @@
 ".\discover-more\stm32f4x7_eth_bsp.o"
 ".\discover-more\fs.o"
 ".\discover-more\httpserver-netconn.o"
+".\discover-more\custom_stm32f4_board.o"
 ".\discover-more\stm32f4_discovery_lcd.o"
 ".\discover-more\stm32f4_discovery.o"
 ".\discover-more\stm32f4xx_exti.o"
