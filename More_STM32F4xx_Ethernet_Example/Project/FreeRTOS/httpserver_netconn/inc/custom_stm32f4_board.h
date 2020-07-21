@@ -59,6 +59,10 @@
 #define CUSTOM_COM1_RX_DMA_STREAM          DMA2_Stream2
 #define CUSTOM_COM1_RX_DMA_CHANNEL         DMA_Channel_4
 
+
+void STM_CUSTOM_COMInit(COM_TypeDef COM, USART_InitTypeDef* USART_InitStruct);
+
+
 #endif /* __STM32F4_DISCOVERY_H */
 /**
   * @}
