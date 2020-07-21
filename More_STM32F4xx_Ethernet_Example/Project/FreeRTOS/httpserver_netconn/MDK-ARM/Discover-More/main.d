@@ -77,3 +77,12 @@
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h
 .\discover-more\main.o: ..\inc\httpserver-netconn.h
 .\discover-more\main.o: ..\inc\custom_stm32f4_board.h
+.\discover-more\main.o: ..\inc\tm_stm32f4_usart.h
+.\discover-more\main.o: ..\inc\attributes.h
+.\discover-more\main.o: ..\inc\defines.h
+.\discover-more\main.o: ..\inc\tm_stm32f4_gpio.h
+.\discover-more\main.o: ..\inc\tm_stm32f4_usart_dma.h
+.\discover-more\main.o: ..\inc\tm_stm32f4_dma.h
+.\discover-more\main.o: ..\inc\tm_stm32f4_dma.h
+.\discover-more\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\discover-more\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

@@ -461,6 +461,26 @@
               <FileType>1</FileType>
               <FilePath>..\src\custom_stm32f4_board.c</FilePath>
             </File>
+            <File>
+              <FileName>tm_stm32f4_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\tm_stm32f4_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>tm_stm32f4_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\tm_stm32f4_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>tm_stm32f4_usart_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\tm_stm32f4_usart_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>tm_stm32f4_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\tm_stm32f4_gpio.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

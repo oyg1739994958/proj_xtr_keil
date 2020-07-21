@@ -50,6 +50,11 @@
 #include "httpserver-netconn.h"
 
 #include "custom_stm32f4_board.h"
+#include "tm_stm32f4_usart.h"
+#include "tm_stm32f4_usart_dma.h"
+
+#include <stdio.h>
+#include <stdarg.h>
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -71,6 +76,10 @@ USART_InitTypeDef USART_InitStructure;
 
 /* Private function prototypes -----------------------------------------------*/
 						
+void LCD_LED_Init(void);
+void ToggleLed4(void * pvParameters);
+void Printf_task(void * pvParameters);
+
 #ifdef __GNUC__
   /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
      set to 'Yes') calls __io_putchar() */
@@ -78,10 +87,7 @@ USART_InitTypeDef USART_InitStructure;
 #else
   #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__ */
-  
-void LCD_LED_Init(void);
-void ToggleLed4(void * pvParameters);
-void Printf_task(void * pvParameters);
+void DMA_printf(const char *format,...);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -119,8 +125,9 @@ int main(void)
 	
   /*Initialize Serial COM */ 
   STM_CUSTOM_COMInit(CUSTOM_NO_COM1, &USART_InitStructure);
-  printf("\n\rSerial communication complete!\n\r");
-  
+	TM_USART_DMA_Init(USART1);  
+  DMA_printf("\n\rSerial communication complete!\n\r");
+	
   /* configure Ethernet (GPIOs, clocks, MAC, DMA) */ 
   ETH_BSP_Config();
     
@@ -163,7 +170,7 @@ void Printf_task(void * pvParameters)
   	
     ch = USART_ReceiveData(CUSTOM_COM1);
 	  
-    printf("%c", ch&0xff);    
+    DMA_printf("%c", ch&0xff);    
 
   }
 }
@@ -223,6 +230,20 @@ PUTCHAR_PROTOTYPE
   while (USART_GetFlagStatus(CUSTOM_COM1, USART_FLAG_TC) == RESET);
 					 
   return ch;
+}
+
+void DMA_printf(const char *format,...)
+{
+	uint32_t length;
+	va_list args;
+	uint8_t buffer[256];	
+
+//	while (huart1.gState != HAL_UART_STATE_READY);
+	va_start(args, format);
+	length = vsnprintf((char*)buffer, sizeof(buffer), (char*)format, args);
+	va_end(args);
+	
+	TM_USART_DMA_Send(USART1, (uint8_t *)&buffer, length);	
 }
 
 #ifdef  USE_FULL_ASSERT
