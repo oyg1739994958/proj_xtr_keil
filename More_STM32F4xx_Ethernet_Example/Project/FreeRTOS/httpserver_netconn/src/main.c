@@ -48,6 +48,7 @@
 #include "task.h"
 #include "tcpip.h"
 #include "httpserver-netconn.h"
+#include "udp.h"
 
 #include "custom_stm32f4_board.h"
 #include "tm_stm32f4_usart.h"
@@ -69,16 +70,28 @@
 #define DHCP_TASK_PRIO   ( tskIDLE_PRIORITY + 2 )      
 #define LED_TASK_PRIO    ( tskIDLE_PRIORITY + 1 )
 #define PRINTF_TASK_PRIO    ( tskIDLE_PRIORITY + 1 )
+#define UDP_TASK_PRIO		 ( tskIDLE_PRIORITY + 1 )
+#define ETH_PRINTF_TASK_PRIO    ( tskIDLE_PRIORITY + 1 )
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 USART_InitTypeDef USART_InitStructure;
+xSemaphoreHandle xSemaphore_DHCP = NULL;
+xSemaphoreHandle xSemaphore_UDP = NULL;
+struct udp_pcb *pcb;
+struct pbuf *p;
+struct ip_addr dst_addr;
 
+const unsigned short dst_port = 8080;
+
+	
 /* Private function prototypes -----------------------------------------------*/
 						
 void LCD_LED_Init(void);
 void ToggleLed4(void * pvParameters);
 void Printf_task(void * pvParameters);
+void LwIP_UDP_task(void * pvParameters);
+void ETH_Printf_task(void * pvParameters);
 
 #ifdef __GNUC__
   /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -88,6 +101,7 @@ void Printf_task(void * pvParameters);
   #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__ */
 void DMA_printf(const char *format,...);
+void ETH_printf(const char *format,...);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -141,13 +155,19 @@ int main(void)
   /* Start DHCPClient */
   xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 4, NULL,DHCP_TASK_PRIO, NULL);
 #endif
-    
+
+  /* Start UDP task */
+  xTaskCreate(LwIP_UDP_task, "UDP", configMINIMAL_STACK_SIZE * 4, NULL, UDP_TASK_PRIO, NULL);
+
   /* Start toogleLed4 task : Toggle LED4  every 250ms */
   xTaskCreate(ToggleLed4, "LED4", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
 	
   /* Start custom task : printf */
   xTaskCreate(Printf_task, "Printf", configMINIMAL_STACK_SIZE * 4, NULL, PRINTF_TASK_PRIO, NULL);
-  
+
+  /* Start custom task : ETH_printf */
+//  xTaskCreate(ETH_Printf_task, "ETH_Printf", configMINIMAL_STACK_SIZE * 4, NULL, ETH_PRINTF_TASK_PRIO, NULL);
+	
   /* Start scheduler */
   vTaskStartScheduler();
 
@@ -170,10 +190,30 @@ void Printf_task(void * pvParameters)
   	
     ch = USART_ReceiveData(CUSTOM_COM1);
 	  
-    DMA_printf("%c", ch&0xff);    
+    DMA_printf("%c", ch&0xff);
+    
+		if( xSemaphore_UDP != NULL )    {
+			
+				ETH_printf("%c", ch&0xff);    
+			
+		}
 
   }
 }
+
+//void ETH_Printf_task(void * pvParameters)
+//{
+//  int ch;
+//  for ( ;; ) {
+//    
+//    while (USART_GetFlagStatus(CUSTOM_COM1, USART_FLAG_RXNE) == RESET);
+//  	
+//    ch = USART_ReceiveData(CUSTOM_COM1);
+//	  
+//    ETH_printf("%c", ch&0xff);    
+//  }
+//}
+
 
 /**
   * @brief  Toggle Led4 task
@@ -187,6 +227,44 @@ void ToggleLed4(void * pvParameters)
     STM_EVAL_LEDToggle(LED4);
     vTaskDelay(250);
   }
+}
+
+void LwIP_UDP_task(void * pvParameters)
+{
+  err_t err;
+  const unsigned short src_port = 12345;
+	
+#ifdef USE_DHCP
+	while( xSemaphore_DHCP == NULL )    {
+	}
+		// See if we can obtain the semaphore.  If the semaphore is not available
+		// wait 10 ticks to see if it becomes free. 
+	if( xSemaphoreTake( xSemaphore_DHCP, ( portTickType ) 5 ) == pdTRUE )
+	{
+#endif
+			// We were able to obtain the semaphore and can now access the
+			// shared resource.
+		
+			IP4_ADDR(&dst_addr,192,168,1,178);
+			pcb = udp_new();
+			err = udp_bind(pcb, IP_ADDR_ANY, src_port);
+		
+			// We have finished accessing the shared resource.  Release the 
+			// semaphore.
+#ifdef USE_DHCP
+			xSemaphoreGive( xSemaphore_DHCP );
+#endif
+			vSemaphoreCreateBinary( xSemaphore_UDP );
+			vTaskDelete(NULL);
+#ifdef USE_DHCP
+	}
+	else
+	{
+			vTaskDelete(NULL);
+			// We could not obtain the semaphore and can therefore not access
+			// the shared resource safely.
+	}
+#endif
 }
 
 /**
@@ -244,6 +322,25 @@ void DMA_printf(const char *format,...)
 	va_end(args);
 	
 	TM_USART_DMA_Send(USART1, (uint8_t *)&buffer, length);	
+}
+
+void ETH_printf(const char *format,...)
+{
+	uint32_t length;
+	va_list args;
+	uint8_t buffer[256];	
+  err_t err;
+
+//	while (huart1.gState != HAL_UART_STATE_READY);
+	va_start(args, format);
+	length = vsnprintf((char*)buffer, sizeof(buffer), (char*)format, args);
+	va_end(args);
+	
+	p->payload = &buffer;
+	p->len = length;	
+	p = pbuf_alloc(PBUF_TRANSPORT, sizeof(buffer), PBUF_RAM);
+	err = udp_sendto(pcb, p, &dst_addr, dst_port);
+	pbuf_free(p);
 }
 
 #ifdef  USE_FULL_ASSERT

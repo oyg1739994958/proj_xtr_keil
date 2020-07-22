@@ -64,6 +64,7 @@ DHCP_State_TypeDef;
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 struct netif xnetif; /* network interface structure */
+extern xSemaphoreHandle xSemaphore_DHCP;
 
 /* Private functions ---------------------------------------------------------*/
 /**
@@ -189,6 +190,7 @@ void LwIP_DHCP_task(void * pvParameters)
           LCD_DisplayStringLine(Line9, iptxt);
 #endif  
           /* end of DHCP process: LED1 stays ON*/
+					vSemaphoreCreateBinary(xSemaphore_DHCP);
           vTaskDelete(NULL);
         } else {
           /* DHCP timeout */
@@ -221,6 +223,7 @@ void LwIP_DHCP_task(void * pvParameters)
             LCD_DisplayStringLine(Line9, iptxt);
 #endif
             /* end of DHCP process: LED1 stays ON*/
+						vSemaphoreCreateBinary(xSemaphore_DHCP);
             vTaskDelete(NULL);
           }
         }
