@@ -306,6 +306,8 @@ void udp_recv_fn(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr 
 					GPIO_SetBits(GPIOA, GPIO_Pin_15);
 					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
 					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x07:		//3 loop 52 3k
 					break;
