@@ -53,6 +53,10 @@
 #include "stm32f4xx.h"
 #include "stm32f4x7_eth_bsp.h"
 
+#include "tcpip.h"
+#include "httpserver-netconn.h"
+#include "udp.h"
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 //#define USE_LCD        /* enable LCD  */  
@@ -92,6 +96,7 @@
 /* Exported functions ------------------------------------------------------- */  
 void Time_Update(void);
 void Delay(uint32_t nCount);
+void udp_recv_fn(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr, u16_t port);
 
 
 #ifdef __cplusplus

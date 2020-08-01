@@ -70,6 +70,14 @@
 .\discover-more\ethernetif.o: ..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery.h
 .\discover-more\ethernetif.o: ..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery_lcd.h
 .\discover-more\ethernetif.o: ..\..\..\..\Utilities\STM32F4-Discovery\fonts.h
+.\discover-more\ethernetif.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\tcpip.h
+.\discover-more\ethernetif.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api_msg.h
+.\discover-more\ethernetif.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/igmp.h
+.\discover-more\ethernetif.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api.h
+.\discover-more\ethernetif.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h
+.\discover-more\ethernetif.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h
+.\discover-more\ethernetif.o: ..\inc\httpserver-netconn.h
+.\discover-more\ethernetif.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\udp.h
 .\discover-more\ethernetif.o: ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h
 .\discover-more\ethernetif.o: ..\inc\stm32f4x7_eth_conf.h
 .\discover-more\ethernetif.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

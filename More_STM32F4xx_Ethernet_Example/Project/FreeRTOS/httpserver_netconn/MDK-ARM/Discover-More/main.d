@@ -42,15 +42,6 @@
 .\discover-more\main.o: ..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery.h
 .\discover-more\main.o: ..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery_lcd.h
 .\discover-more\main.o: ..\..\..\..\Utilities\STM32F4-Discovery\fonts.h
-.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\FreeRTOS.h
-.\discover-more\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\projdefs.h
-.\discover-more\main.o: ..\inc\FreeRTOSConfig.h
-.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\portable.h
-.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3\portmacro.h
-.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\mpu_wrappers.h
-.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\task.h
-.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\list.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\tcpip.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/opt.h
 .\discover-more\main.o: ..\inc\lwipopts.h
@@ -60,12 +51,20 @@
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cpu.h
 .\discover-more\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api_msg.h
+.\discover-more\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip_addr.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/inet.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/err.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h
+.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\FreeRTOS.h
+.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\projdefs.h
+.\discover-more\main.o: ..\inc\FreeRTOSConfig.h
+.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\portable.h
+.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3\portmacro.h
+.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\mpu_wrappers.h
 .\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\task.h
+.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\list.h
 .\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\queue.h
 .\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\semphr.h
 .\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\queue.h
@@ -76,6 +75,10 @@
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h
 .\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h
 .\discover-more\main.o: ..\inc\httpserver-netconn.h
+.\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\udp.h
+.\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip.h
+.\discover-more\main.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/def.h
+.\discover-more\main.o: ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\task.h
 .\discover-more\main.o: ..\inc\custom_stm32f4_board.h
 .\discover-more\main.o: ..\inc\tm_stm32f4_usart.h
 .\discover-more\main.o: ..\inc\attributes.h

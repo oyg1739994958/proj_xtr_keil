@@ -27,12 +27,21 @@ Project File Date:  07/22/2020
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Program Files\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Discover-More'
+compiling stm32f4xx_it.c...
+compiling netconf.c...
+..\src\netconf.c(150): warning:  #177-D: variable "iptab"  was declared but never referenced
+    uint8_t iptab[4];
+..\src\netconf.c(151): warning:  #177-D: variable "iptxt"  was declared but never referenced
+    uint8_t iptxt[20];
+..\src\netconf.c: 2 warnings, 0 errors
+compiling stm32f4x7_eth_bsp.c...
+compiling ethernetif.c...
 compiling main.c...
 linking...
-Program Size: Code=53838 RO-data=50294 RW-data=572 ZI-data=65212  
+Program Size: Code=54370 RO-data=50370 RW-data=624 ZI-data=65216  
 FromELF: creating hex file...
-".\Discover-More\Project.axf" - 0 Error(s), 0 Warning(s).
-Build Time Elapsed:  00:00:02
+".\Discover-More\Project.axf" - 0 Error(s), 2 Warning(s).
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>

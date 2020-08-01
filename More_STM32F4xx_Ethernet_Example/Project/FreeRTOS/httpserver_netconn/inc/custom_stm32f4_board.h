@@ -32,9 +32,12 @@
 typedef enum 
 {
   CUSTOM_NO_COM1 = 0,
+	CUSTOM_NO_COM2 = 1,
+	CUSTOM_NO_COM3 = 2,
+	CUSTOM_NO_COM4 = 3,
 } CUSTOM_NO_COM_TypeDef; 
 
-#define CUSTOM_COMn                             1
+#define CUSTOM_COMn                             4
 /**
  * @brief Definition for COM port1, connected to USART1
  */ 
@@ -64,6 +67,89 @@ typedef enum
 #define CUSTOM_COM1_RX_DMA_STREAM          DMA2_Stream2
 #define CUSTOM_COM1_RX_DMA_CHANNEL         DMA_Channel_4
 
+//Definition for COM port2, connected to USART2
+
+#define CUSTOM_COM2                        USART2
+#define CUSTOM_COM2_CLK                    RCC_APB1Periph_USART2
+#define CUSTOM_COM2_TX_PIN                 GPIO_Pin_5
+#define CUSTOM_COM2_TX_GPIO_PORT           GPIOD
+#define CUSTOM_COM2_TX_GPIO_CLK            RCC_AHB1Periph_GPIOD
+#define CUSTOM_COM2_TX_SOURCE              GPIO_PinSource5
+#define CUSTOM_COM2_TX_AF                  GPIO_AF_USART2
+#define CUSTOM_COM2_RX_PIN                 GPIO_Pin_6
+#define CUSTOM_COM2_RX_GPIO_PORT           GPIOD
+#define CUSTOM_COM2_RX_GPIO_CLK            RCC_AHB1Periph_GPIOD
+#define CUSTOM_COM2_RX_SOURCE              GPIO_PinSource6
+#define CUSTOM_COM2_RX_AF                  GPIO_AF_USART2
+#define CUSTOM_COM2_IRQn                   USART2_IRQn
+
+#define CUSTOM_COM2_TX_DMA                 DMA1
+#define CUSTOM_COM2_TX_DMA_CLK             RCC_AHB1Periph_DMA1
+
+#define CUSTOM_COM2_RX_DMA                 DMA1
+#define CUSTOM_COM2_RX_DMA_CLK             RCC_AHB1Periph_DMA1
+
+#define CUSTOM_COM2_TX_DMA_STREAM          DMA1_Stream6
+#define CUSTOM_COM2_TX_DMA_CHANNEL         DMA_Channel_4
+
+#define CUSTOM_COM2_RX_DMA_STREAM          DMA1_Stream5
+#define CUSTOM_COM2_RX_DMA_CHANNEL         DMA_Channel_4
+
+//Definition for COM port3, connected to USART3
+
+#define CUSTOM_COM3                        USART3
+#define CUSTOM_COM3_CLK                    RCC_APB1Periph_USART3
+#define CUSTOM_COM3_TX_PIN                 GPIO_Pin_8
+#define CUSTOM_COM3_TX_GPIO_PORT           GPIOD
+#define CUSTOM_COM3_TX_GPIO_CLK            RCC_AHB1Periph_GPIOD
+#define CUSTOM_COM3_TX_SOURCE              GPIO_PinSource8
+#define CUSTOM_COM3_TX_AF                  GPIO_AF_USART3
+#define CUSTOM_COM3_RX_PIN                 GPIO_Pin_9
+#define CUSTOM_COM3_RX_GPIO_PORT           GPIOD
+#define CUSTOM_COM3_RX_GPIO_CLK            RCC_AHB1Periph_GPIOD
+#define CUSTOM_COM3_RX_SOURCE              GPIO_PinSource9
+#define CUSTOM_COM3_RX_AF                  GPIO_AF_USART3
+#define CUSTOM_COM3_IRQn                   USART3_IRQn
+
+#define CUSTOM_COM3_TX_DMA                 DMA1
+#define CUSTOM_COM3_TX_DMA_CLK             RCC_AHB1Periph_DMA1
+
+#define CUSTOM_COM3_RX_DMA                 DMA1
+#define CUSTOM_COM3_RX_DMA_CLK             RCC_AHB1Periph_DMA1
+
+#define CUSTOM_COM3_TX_DMA_STREAM          DMA1_Stream3
+#define CUSTOM_COM3_TX_DMA_CHANNEL         DMA_Channel_4
+
+#define CUSTOM_COM3_RX_DMA_STREAM          DMA1_Stream1
+#define CUSTOM_COM3_RX_DMA_CHANNEL         DMA_Channel_4
+
+//Definition for COM port4, connected to UART4
+
+#define CUSTOM_COM4                        UART4
+#define CUSTOM_COM4_CLK                    RCC_APB1Periph_UART4
+#define CUSTOM_COM4_TX_PIN                 GPIO_Pin_10
+#define CUSTOM_COM4_TX_GPIO_PORT           GPIOC
+#define CUSTOM_COM4_TX_GPIO_CLK            RCC_AHB1Periph_GPIOC
+#define CUSTOM_COM4_TX_SOURCE              GPIO_PinSource10
+#define CUSTOM_COM4_TX_AF                  GPIO_AF_UART4
+#define CUSTOM_COM4_RX_PIN                 GPIO_Pin_11
+#define CUSTOM_COM4_RX_GPIO_PORT           GPIOC
+#define CUSTOM_COM4_RX_GPIO_CLK            RCC_AHB1Periph_GPIOC
+#define CUSTOM_COM4_RX_SOURCE              GPIO_PinSource11
+#define CUSTOM_COM4_RX_AF                  GPIO_AF_UART4
+#define CUSTOM_COM4_IRQn                   UART4_IRQn
+
+#define CUSTOM_COM4_TX_DMA                 DMA1
+#define CUSTOM_COM4_TX_DMA_CLK             RCC_AHB1Periph_DMA1
+
+#define CUSTOM_COM4_RX_DMA                 DMA1
+#define CUSTOM_COM4_RX_DMA_CLK             RCC_AHB1Periph_DMA1
+
+#define CUSTOM_COM4_TX_DMA_STREAM          DMA1_Stream4
+#define CUSTOM_COM4_TX_DMA_CHANNEL         DMA_Channel_4
+
+#define CUSTOM_COM4_RX_DMA_STREAM          DMA1_Stream2
+#define CUSTOM_COM4_RX_DMA_CHANNEL         DMA_Channel_4
 
 void STM_CUSTOM_COMInit(CUSTOM_NO_COM_TypeDef CUSTOM_COM, USART_InitTypeDef* USART_InitStruct);
 

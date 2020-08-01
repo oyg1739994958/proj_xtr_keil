@@ -76,13 +76,30 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 USART_InitTypeDef USART_InitStructure;
-xSemaphoreHandle xSemaphore_DHCP = NULL;
-xSemaphoreHandle xSemaphore_UDP = NULL;
-struct udp_pcb *pcb;
-struct pbuf *p;
-struct ip_addr dst_addr;
+//xSemaphoreHandle xSemaphore_DHCP = NULL;
+//xSemaphoreHandle xSemaphore_UDP = NULL;
+//struct udp_pcb *pcb;
+//struct pbuf *p;
+//struct ip_addr dst_addr;
 
-const unsigned short dst_port = 8080;
+extern struct udp_pcb *pcb;
+extern struct pbuf *p;
+extern struct ip_addr dst_addr;
+
+extern struct netif xnetif;
+
+extern const unsigned short dst_port;
+extern const unsigned short src_port;
+
+uint8_t ETH_send_buffer[128];
+uint8_t ETH_recv_buffer[128];
+uint8_t command_H;
+uint8_t command_L;
+int ETH_length;
+
+xTaskHandle printf_xHandle = NULL;
+
+//const unsigned short dst_port = 8080;
 
 	
 /* Private function prototypes -----------------------------------------------*/
@@ -90,7 +107,7 @@ const unsigned short dst_port = 8080;
 void LCD_LED_Init(void);
 void ToggleLed4(void * pvParameters);
 void Printf_task(void * pvParameters);
-void LwIP_UDP_task(void * pvParameters);
+//void LwIP_UDP_task(void * pvParameters);
 void ETH_Printf_task(void * pvParameters);
 
 #ifdef __GNUC__
@@ -157,7 +174,7 @@ int main(void)
 #endif
 
   /* Start UDP task */
-  xTaskCreate(LwIP_UDP_task, "UDP", configMINIMAL_STACK_SIZE * 4, NULL, UDP_TASK_PRIO, NULL);
+//  xTaskCreate(LwIP_UDP_task, "UDP", configMINIMAL_STACK_SIZE * 4, NULL, UDP_TASK_PRIO, NULL);
 
   /* Start toogleLed4 task : Toggle LED4  every 250ms */
   xTaskCreate(ToggleLed4, "LED4", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
@@ -184,21 +201,179 @@ int main(void)
 void Printf_task(void * pvParameters)
 {
   int ch;
+	int cnt = 0;
+	uint8_t buffer[128];
   for ( ;; ) {
     
     while (USART_GetFlagStatus(CUSTOM_COM1, USART_FLAG_RXNE) == RESET);
   	
     ch = USART_ReceiveData(CUSTOM_COM1);
-	  
-    DMA_printf("%c", ch&0xff);
-    
-		if( xSemaphore_UDP != NULL )    {
+		
+		if (ch == 0x0A){
+				cnt = 0;
+				buffer[cnt] = ch;
+				cnt++;
+				while (buffer[cnt-1] != 0x0D){
+					while (USART_GetFlagStatus(CUSTOM_COM1, USART_FLAG_RXNE) == RESET);
+					ch = USART_ReceiveData(CUSTOM_COM1);
+					switch (ch){
+						case 0x0D:   //0A send 
+							buffer[cnt] = ch;
+							ETH_length = cnt + 1;
+							p = pbuf_alloc(PBUF_TRANSPORT, ETH_length, PBUF_RAM);
+							memcpy(p->payload, &buffer, ETH_length);
+							p->len = ETH_length;
+							udp_sendto_if(pcb, p, &dst_addr, dst_port, &xnetif);
+							pbuf_free(p);
+							cnt++;
+							break;
+						default:
+							//if cnt>=127
+							buffer[cnt] = ch;
+							cnt++;
+							break;
+					}
+
+				}
 			
-				ETH_printf("%c", ch&0xff);    
 			
 		}
-
+	  
+//    switch (ch){
+//			case 0x0A:   //0A send 
+//				buffer[cnt] = ch;
+//				ETH_length = cnt + 1;
+//				p = pbuf_alloc(PBUF_TRANSPORT, ETH_length, PBUF_RAM);
+//				memcpy(p->payload, &buffer, ETH_length);
+//				p->len = ETH_length;
+//				udp_sendto_if(pcb, p, &dst_addr, dst_port, &xnetif);
+//				pbuf_free(p);
+//				cnt = 0;
+//				break;
+//			default:
+//				//if cnt>=127
+//				buffer[cnt] = ch;
+//				cnt++;
+//				break;
+//		}
+//		if( xSemaphore_UDP != NULL )    {
+			
+//				ETH_printf("%c", ch&0xff);    
+//    DMA_printf("%c", ch&0xff);
+//		}
   }
+}
+
+
+void udp_recv_fn(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr, u16_t port){
+	if (p != NULL) {
+		memcpy(ETH_recv_buffer, &p->payload, p->len);
+		command_H = ETH_recv_buffer[1];
+		command_L = ETH_recv_buffer[0];
+		if (command_H == 0x00 || command_H == 0xFF) {
+			GPIO_SetBits(GPIOA, GPIO_Pin_3|GPIO_Pin_5|GPIO_Pin_8|GPIO_Pin_15);
+			GPIO_SetBits(GPIOD, GPIO_Pin_11);
+			GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7);
+			//delete task
+			if( printf_xHandle != NULL ) {
+				vTaskDelete( printf_xHandle );
+			}
+			//pwm duty rate 100%
+		}
+		else {
+			GPIOE->ODR = ((GPIOE->ODR)&(~0xC0)) | ((((~command_L)&0x01)<<7) | (((~command_L)&0x20)<<1));
+			GPIOA->ODR = ((GPIOA->ODR)&(~0x128)) | ((((~command_L)&0x02)<<2) | (((~command_L)&0x04)<<3) | (((~command_L)&0x08)<<5));
+			GPIOD->ODR = ((GPIOD->ODR)&(~0x800)) | (((~command_L)&0x10)<<7);
+			switch (command_H) {
+				case 0x01:   	//self test
+					break;
+				case 0x02:   	//gyro pulse
+					break;
+				case 0x03:		//comp 3k
+					break;
+				case 0x04:		//comp 4k
+					break;
+				case 0x05:		//half circle lock
+					break;
+				case 0x06:		//3 loop 48 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					break;
+				case 0x07:		//3 loop 52 3k
+					break;
+				case 0x08:		//3 loop 68 3k
+					break;
+				case 0x09:		//3 loop 72 3k
+					break;
+				case 0x0A:		//3 loop 48 4k
+					break;
+				case 0x0B:		//3 loop 52 4k
+					break;
+				case 0x0C:		//3 loop 58 4k
+					break;
+				case 0x0D:		//3 loop 62 4k
+					break;
+				case 0x0E:		//rpm 100
+					break;
+				case 0x0F:		//rpm 200
+					break;
+				case 0x10:		//rpm 100
+					break;
+				case 0x11:		//rpm 200
+					break;
+				case 0x12:		//up 3k
+					break;
+				case 0x13:		//down 3k
+					break;
+				case 0x14:		//left 3k
+					break;
+				case 0x15:		//right 3k
+					break;
+				case 0x16:		//up 4k
+					break;
+				case 0x17:		//down 4k
+					break;
+				case 0x18:		//left 4k
+					break;
+				case 0x19:		//right 4k
+					break;
+				case 0x1A:		//lock 3k
+					break;
+				case 0x1B:		//lock 4k
+					break;
+				case 0x1D:		//channel 3k
+					break;
+				case 0x1F:		//channel 4k
+					break;
+				case 0x20:		//test 3k
+					break;
+				case 0x21:		//test 4k
+					break;
+				case 0x22:		//regulate 3k
+					break;
+				case 0x23:		//regulate 4k
+					break;
+				case 0x24:		//wireless
+					break;
+				case 0xF0:		//uart send
+					xTaskCreate(Printf_task, "Printf", configMINIMAL_STACK_SIZE * 4, NULL, PRINTF_TASK_PRIO, &printf_xHandle);
+					break;
+				default:
+					break;
+			}
+			
+		}
+//			udp_sendto(pcb, p, &dst_addr, 1234); //dest port
+		pbuf_free(p);
+	}
 }
 
 //void ETH_Printf_task(void * pvParameters)
@@ -229,43 +404,43 @@ void ToggleLed4(void * pvParameters)
   }
 }
 
-void LwIP_UDP_task(void * pvParameters)
-{
-  err_t err;
-  const unsigned short src_port = 12345;
-	
-#ifdef USE_DHCP
-	while( xSemaphore_DHCP == NULL )    {
-	}
-		// See if we can obtain the semaphore.  If the semaphore is not available
-		// wait 10 ticks to see if it becomes free. 
-	if( xSemaphoreTake( xSemaphore_DHCP, ( portTickType ) 5 ) == pdTRUE )
-	{
-#endif
-			// We were able to obtain the semaphore and can now access the
-			// shared resource.
-		
-			IP4_ADDR(&dst_addr,192,168,1,178);
-			pcb = udp_new();
-			err = udp_bind(pcb, IP_ADDR_ANY, src_port);
-		
-			// We have finished accessing the shared resource.  Release the 
-			// semaphore.
-#ifdef USE_DHCP
-			xSemaphoreGive( xSemaphore_DHCP );
-#endif
-			vSemaphoreCreateBinary( xSemaphore_UDP );
-			vTaskDelete(NULL);
-#ifdef USE_DHCP
-	}
-	else
-	{
-			vTaskDelete(NULL);
-			// We could not obtain the semaphore and can therefore not access
-			// the shared resource safely.
-	}
-#endif
-}
+//void LwIP_UDP_task(void * pvParameters)
+//{
+//  err_t err;
+//  const unsigned short src_port = 12345;
+//	
+//#ifdef USE_DHCP
+//	while( xSemaphore_DHCP == NULL )    {
+//	}
+//		// See if we can obtain the semaphore.  If the semaphore is not available
+//		// wait 10 ticks to see if it becomes free. 
+//	if( xSemaphoreTake( xSemaphore_DHCP, ( portTickType ) 5 ) == pdTRUE )
+//	{
+//#endif
+//			// We were able to obtain the semaphore and can now access the
+//			// shared resource.
+//		
+//			IP4_ADDR(&dst_addr,192,168,1,97);
+//			pcb = udp_new();
+//			err = udp_bind(pcb, IP_ADDR_ANY, src_port);
+//		
+//			// We have finished accessing the shared resource.  Release the 
+//			// semaphore.
+//#ifdef USE_DHCP
+//			xSemaphoreGive( xSemaphore_DHCP );
+//#endif
+//			vSemaphoreCreateBinary( xSemaphore_UDP );
+//			vTaskDelete(NULL);
+//#ifdef USE_DHCP
+//	}
+//	else
+//	{
+//			vTaskDelete(NULL);
+//			// We could not obtain the semaphore and can therefore not access
+//			// the shared resource safely.
+//	}
+//#endif
+//}
 
 /**
   * @brief  Initializes the STM324xG-EVAL's LCD and LEDs resources.
@@ -329,17 +504,23 @@ void ETH_printf(const char *format,...)
 	uint32_t length;
 	va_list args;
 	uint8_t buffer[256];	
-  err_t err;
+
+//  err_t err;
 
 //	while (huart1.gState != HAL_UART_STATE_READY);
 	va_start(args, format);
 	length = vsnprintf((char*)buffer, sizeof(buffer), (char*)format, args);
 	va_end(args);
 	
-	p->payload = &buffer;
-	p->len = length;	
-	p = pbuf_alloc(PBUF_TRANSPORT, sizeof(buffer), PBUF_RAM);
-	err = udp_sendto(pcb, p, &dst_addr, dst_port);
+//	p->payload = (void *)buffer;
+//	pbuf_take(p, &buffer, length);
+//	memcpy(p->payload, buffer, length);
+		
+	p = pbuf_alloc(PBUF_TRANSPORT, length, PBUF_RAM);
+//	p->len = length;
+	memcpy(p->payload, &buffer, length);
+	p->len = length;
+	udp_sendto_if(pcb, p, &dst_addr, dst_port, &xnetif);
 	pbuf_free(p);
 }
 

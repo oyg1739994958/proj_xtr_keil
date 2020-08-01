@@ -64,7 +64,14 @@ DHCP_State_TypeDef;
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 struct netif xnetif; /* network interface structure */
-extern xSemaphoreHandle xSemaphore_DHCP;
+
+struct udp_pcb *pcb;
+struct pbuf *p;
+struct ip_addr dst_addr;
+
+const unsigned short dst_port = 8080;
+const unsigned short src_port = 12345;
+//extern xSemaphoreHandle xSemaphore_DHCP;
 
 /* Private functions ---------------------------------------------------------*/
 /**
@@ -190,7 +197,11 @@ void LwIP_DHCP_task(void * pvParameters)
           LCD_DisplayStringLine(Line9, iptxt);
 #endif  
           /* end of DHCP process: LED1 stays ON*/
-					vSemaphoreCreateBinary(xSemaphore_DHCP);
+//					vSemaphoreCreateBinary(xSemaphore_DHCP);
+			IP4_ADDR(&dst_addr,192,168,1,97);
+			pcb = udp_new();
+			udp_bind(pcb, IP_ADDR_ANY, src_port);
+			udp_recv(pcb, udp_recv_fn, NULL);
           vTaskDelete(NULL);
         } else {
           /* DHCP timeout */
@@ -223,7 +234,11 @@ void LwIP_DHCP_task(void * pvParameters)
             LCD_DisplayStringLine(Line9, iptxt);
 #endif
             /* end of DHCP process: LED1 stays ON*/
-						vSemaphoreCreateBinary(xSemaphore_DHCP);
+//						vSemaphoreCreateBinary(xSemaphore_DHCP);
+			IP4_ADDR(&dst_addr,192,168,1,97);
+			pcb = udp_new();
+			udp_bind(pcb, IP_ADDR_ANY, src_port);
+			udp_recv(pcb, udp_recv_fn, NULL);
             vTaskDelete(NULL);
           }
         }

@@ -1,5 +1,5 @@
 Dependencies for Project 'Project', Target 'Discover-More': (DO NOT MODIFY !)
-F (..\src\main.c)(0x5F1724D1)(-c --cpu Cortex-M4 -D__MICROLIB -g -O1 --apcs=interwork -I ..\ -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\STM32F4-Discovery -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3-I"D:\Program Files\Keil_v5\ARM\RV31\INC"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx"-D__UVISION_VERSION="526" -DSTM32F40XX -DUSE_STDPERIPH_DRIVER-o .\discover-more\main.o --omf_browse .\discover-more\main.crf --depend .\discover-more\main.d)
+F (..\src\main.c)(0x5F2432F3)(-c --cpu Cortex-M4 -D__MICROLIB -g -O1 --apcs=interwork -I ..\ -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\STM32F4-Discovery -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3-I"D:\Program Files\Keil_v5\ARM\RV31\INC"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx"-D__UVISION_VERSION="526" -DSTM32F40XX -DUSE_STDPERIPH_DRIVER-o .\discover-more\main.o --omf_browse .\discover-more\main.crf --depend .\discover-more\main.d)
 I (..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h)(0x5137AC46)
 I (..\inc\stm32f4x7_eth_conf.h)(0x5137AC38)
 I (D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx\stm32f4xx.h)(0x5F129151)
@@ -37,20 +37,11 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x513
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5137AC44)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5137AC44)
 I (..\inc\netconf.h)(0x5137AC38)
-I (..\inc\main.h)(0x5F130269)
+I (..\inc\main.h)(0x5F242D41)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5F1291EC)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery_lcd.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\fonts.h)(0x5137AC42)
-I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\FreeRTOS.h)(0x5137AC3A)
-I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
-I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\projdefs.h)(0x5137AC3A)
-I (..\inc\FreeRTOSConfig.h)(0x5137AC38)
-I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\portable.h)(0x5137AC3A)
-I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3\portmacro.h)(0x5137AC3E)
-I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\mpu_wrappers.h)(0x5137AC3A)
-I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\task.h)(0x5137AC3A)
-I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\list.h)(0x5137AC3A)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\tcpip.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/opt.h)(0x5137AC40)
 I (..\inc\lwipopts.h)(0x5137AC38)
@@ -60,11 +51,20 @@ I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cc.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cpu.h)(0x5137AC40)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api_msg.h)(0x5137AC40)
+I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip_addr.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/inet.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/err.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5137AC40)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\FreeRTOS.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\projdefs.h)(0x5137AC3A)
+I (..\inc\FreeRTOSConfig.h)(0x5137AC38)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\portable.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3\portmacro.h)(0x5137AC3E)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\mpu_wrappers.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\task.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\list.h)(0x5137AC3A)
 I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\queue.h)(0x5137AC3A)
 I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\semphr.h)(0x5137AC3A)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/igmp.h)(0x5137AC40)
@@ -74,7 +74,10 @@ I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h)(0x5137AC40)
 I (..\inc\httpserver-netconn.h)(0x5137AC38)
-I (..\inc\custom_stm32f4_board.h)(0x5F16ADDA)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\udp.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/def.h)(0x5137AC40)
+I (..\inc\custom_stm32f4_board.h)(0x5F1EFABD)
 I (..\inc\tm_stm32f4_usart.h)(0x57171210)
 I (..\inc\attributes.h)(0x54755132)
 I (..\inc\defines.h)(0x5443380E)
@@ -154,15 +157,27 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5137A
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5137AC44)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5137AC44)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5137AC44)
-I (..\inc\main.h)(0x5F130269)
+I (..\inc\main.h)(0x5F242D41)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5F1291EC)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery_lcd.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\fonts.h)(0x5137AC42)
-I (..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h)(0x5137AC46)
-I (..\inc\stm32f4x7_eth_conf.h)(0x5137AC38)
-I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\FreeRTOS.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\tcpip.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/opt.h)(0x5137AC40)
+I (..\inc\lwipopts.h)(0x5137AC38)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/debug.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/arch.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cc.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cpu.h)(0x5137AC40)
+I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api_msg.h)(0x5137AC40)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip_addr.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/inet.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/err.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5137AC40)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\FreeRTOS.h)(0x5137AC3A)
 I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\projdefs.h)(0x5137AC3A)
 I (..\inc\FreeRTOSConfig.h)(0x5137AC38)
 I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\portable.h)(0x5137AC3A)
@@ -171,18 +186,20 @@ I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\mpu_wrappers.h)(0x5137AC3A)
 I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\task.h)(0x5137AC3A)
 I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\list.h)(0x5137AC3A)
 I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\queue.h)(0x5137AC3A)
-I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5137AC40)
-I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/opt.h)(0x5137AC40)
-I (..\inc\lwipopts.h)(0x5137AC38)
-I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/debug.h)(0x5137AC40)
-I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/arch.h)(0x5137AC40)
-I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cc.h)(0x5137AC40)
-I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cpu.h)(0x5137AC40)
-I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
-I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/err.h)(0x5137AC40)
-I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5137AC40)
 I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\semphr.h)(0x5137AC3A)
-F (..\src\netconf.c)(0x5137AC36)(-c --cpu Cortex-M4 -D__MICROLIB -g -O1 --apcs=interwork -I ..\ -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\STM32F4-Discovery -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3-I"D:\Program Files\Keil_v5\ARM\RV31\INC"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx"-D__UVISION_VERSION="526" -DSTM32F40XX -DUSE_STDPERIPH_DRIVER-o .\discover-more\netconf.o --omf_browse .\discover-more\netconf.crf --depend .\discover-more\netconf.d)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/igmp.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netif.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/pbuf.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h)(0x5137AC40)
+I (..\inc\httpserver-netconn.h)(0x5137AC38)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\udp.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/def.h)(0x5137AC40)
+I (..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h)(0x5137AC46)
+I (..\inc\stm32f4x7_eth_conf.h)(0x5137AC38)
+F (..\src\netconf.c)(0x5F242D59)(-c --cpu Cortex-M4 -D__MICROLIB -g -O1 --apcs=interwork -I ..\ -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\STM32F4-Discovery -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3-I"D:\Program Files\Keil_v5\ARM\RV31\INC"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx"-D__UVISION_VERSION="526" -DSTM32F40XX -DUSE_STDPERIPH_DRIVER-o .\discover-more\netconf.o --omf_browse .\discover-more\netconf.crf --depend .\discover-more\netconf.d)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/mem.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/opt.h)(0x5137AC40)
 I (..\inc\lwipopts.h)(0x5137AC38)
@@ -203,7 +220,7 @@ I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/udp.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/def.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS\ethernetif.h)(0x5137AC40)
-I (..\inc\main.h)(0x5F130269)
+I (..\inc\main.h)(0x5F242D41)
 I (D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx\stm32f4xx.h)(0x5F129151)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5137AC46)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -242,7 +259,6 @@ I (..\inc\stm32f4x7_eth_bsp.h)(0x5F1291EC)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery_lcd.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\fonts.h)(0x5137AC42)
-I (..\inc\netconf.h)(0x5137AC38)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\tcpip.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api_msg.h)(0x5137AC40)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
@@ -262,6 +278,8 @@ I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/igmp.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h)(0x5137AC40)
+I (..\inc\httpserver-netconn.h)(0x5137AC38)
+I (..\inc\netconf.h)(0x5137AC38)
 F (..\src\stm32f4x7_eth_bsp.c)(0x5137AC36)(-c --cpu Cortex-M4 -D__MICROLIB -g -O1 --apcs=interwork -I ..\ -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\STM32F4-Discovery -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3-I"D:\Program Files\Keil_v5\ARM\RV31\INC"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx"-D__UVISION_VERSION="526" -DSTM32F40XX -DUSE_STDPERIPH_DRIVER-o .\discover-more\stm32f4x7_eth_bsp.o --omf_browse .\discover-more\stm32f4x7_eth_bsp.crf --depend .\discover-more\stm32f4x7_eth_bsp.d)
 I (..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h)(0x5137AC46)
 I (..\inc\stm32f4x7_eth_conf.h)(0x5137AC38)
@@ -303,7 +321,42 @@ I (..\inc\stm32f4x7_eth_bsp.h)(0x5F1291EC)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery_lcd.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\fonts.h)(0x5137AC42)
-I (..\inc\main.h)(0x5F130269)
+I (..\inc\main.h)(0x5F242D41)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\tcpip.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/opt.h)(0x5137AC40)
+I (..\inc\lwipopts.h)(0x5137AC38)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/debug.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/arch.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cc.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cpu.h)(0x5137AC40)
+I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api_msg.h)(0x5137AC40)
+I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip_addr.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/inet.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/err.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5137AC40)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\FreeRTOS.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\projdefs.h)(0x5137AC3A)
+I (..\inc\FreeRTOSConfig.h)(0x5137AC38)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\portable.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3\portmacro.h)(0x5137AC3E)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\mpu_wrappers.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\task.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\list.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\queue.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\semphr.h)(0x5137AC3A)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/igmp.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netif.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/pbuf.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h)(0x5137AC40)
+I (..\inc\httpserver-netconn.h)(0x5137AC38)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\udp.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/def.h)(0x5137AC40)
 F (..\src\fs.c)(0x5137AC36)(-c --cpu Cortex-M4 -D__MICROLIB -g -O1 --apcs=interwork -I ..\ -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\STM32F4-Discovery -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3-I"D:\Program Files\Keil_v5\ARM\RV31\INC"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx"-D__UVISION_VERSION="526" -DSTM32F40XX -DUSE_STDPERIPH_DRIVER-o .\discover-more\fs.o --omf_browse .\discover-more\fs.crf --depend .\discover-more\fs.d)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/opt.h)(0x5137AC40)
 I (..\inc\lwipopts.h)(0x5137AC38)
@@ -347,7 +400,7 @@ I (..\..\..\..\Utilities\FreeRTOS_v6.1.0\include\semphr.h)(0x5137AC3A)
 I (..\inc\fs.h)(0x5137AC38)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\inc\httpserver-netconn.h)(0x5137AC38)
-F (..\src\custom_stm32f4_board.c)(0x5F16AEC2)(-c --cpu Cortex-M4 -D__MICROLIB -g -O1 --apcs=interwork -I ..\ -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\STM32F4-Discovery -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3-I"D:\Program Files\Keil_v5\ARM\RV31\INC"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx"-D__UVISION_VERSION="526" -DSTM32F40XX -DUSE_STDPERIPH_DRIVER-o .\discover-more\custom_stm32f4_board.o --omf_browse .\discover-more\custom_stm32f4_board.crf --depend .\discover-more\custom_stm32f4_board.d)
+F (..\src\custom_stm32f4_board.c)(0x5F22A7C1)(-c --cpu Cortex-M4 -D__MICROLIB -g -O1 --apcs=interwork -I ..\ -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\STM32F4-Discovery -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3-I"D:\Program Files\Keil_v5\ARM\RV31\INC"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx"-D__UVISION_VERSION="526" -DSTM32F40XX -DUSE_STDPERIPH_DRIVER-o .\discover-more\custom_stm32f4_board.o --omf_browse .\discover-more\custom_stm32f4_board.crf --depend .\discover-more\custom_stm32f4_board.d)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery.h)(0x5137AC42)
 I (D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx\stm32f4xx.h)(0x5F129151)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5137AC46)
@@ -383,7 +436,7 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5137A
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5137AC44)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5137AC44)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5137AC44)
-I (..\inc\custom_stm32f4_board.h)(0x5F16ADDA)
+I (..\inc\custom_stm32f4_board.h)(0x5F1EFABD)
 F (..\src\tm_stm32f4_dma.c)(0x55C1AC2E)(-c --cpu Cortex-M4 -D__MICROLIB -g -O1 --apcs=interwork -I ..\ -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\STM32F4-Discovery -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\include -I ..\..\..\..\Utilities\FreeRTOS_v6.1.0\portable\MDK-ARM\ARM_CM3-I"D:\Program Files\Keil_v5\ARM\RV31\INC"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx"-D__UVISION_VERSION="526" -DSTM32F40XX -DUSE_STDPERIPH_DRIVER-o .\discover-more\tm_stm32f4_dma.o --omf_browse .\discover-more\tm_stm32f4_dma.crf --depend .\discover-more\tm_stm32f4_dma.d)
 I (..\inc\tm_stm32f4_dma.h)(0x569C4FCE)
 I (D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx\stm32f4xx.h)(0x5F129151)
@@ -1857,7 +1910,7 @@ I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/inet.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netif.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip.h)(0x5137AC40)
 I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS\ethernetif.h)(0x5137AC40)
-I (..\inc\main.h)(0x5F130269)
+I (..\inc\main.h)(0x5F242D41)
 I (D:\Program Files\Keil_v5\ARM\INC\ST\STM32F4xx\stm32f4xx.h)(0x5F129151)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5137AC46)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -1896,6 +1949,14 @@ I (..\inc\stm32f4x7_eth_bsp.h)(0x5F1291EC)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\stm32f4_discovery_lcd.h)(0x5137AC42)
 I (..\..\..\..\Utilities\STM32F4-Discovery\fonts.h)(0x5137AC42)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\tcpip.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api_msg.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/igmp.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h)(0x5137AC40)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h)(0x5137AC40)
+I (..\inc\httpserver-netconn.h)(0x5137AC38)
+I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip\udp.h)(0x5137AC40)
 I (..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h)(0x5137AC46)
 I (..\inc\stm32f4x7_eth_conf.h)(0x5137AC38)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
