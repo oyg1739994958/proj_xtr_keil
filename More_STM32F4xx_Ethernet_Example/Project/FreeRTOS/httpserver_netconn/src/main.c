@@ -286,14 +286,68 @@ void udp_recv_fn(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr 
 			GPIOD->ODR = ((GPIOD->ODR)&(~0x800)) | (((~command_L)&0x10)<<7);
 			switch (command_H) {
 				case 0x01:   	//self test
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_0);
+					GPIO_SetBits(GPIOE, GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x02:   	//gyro pulse
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x03:		//comp 3k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x04:		//comp 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x05:		//half circle lock
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_4);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x06:		//3 loop 48 3k
 					//delete task
@@ -310,60 +364,359 @@ void udp_recv_fn(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr 
 					
 					break;
 				case 0x07:		//3 loop 52 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x08:		//3 loop 68 3k
+						//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x09:		//3 loop 72 3k
+						//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x0A:		//3 loop 48 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x0B:		//3 loop 52 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x0C:		//3 loop 58 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x0D:		//3 loop 62 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x0E:		//rpm 100
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x0F:		//rpm 200
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x10:		//rpm 100
+						if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x11:		//rpm 200
+						if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x12:		//up 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x13:		//down 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x14:		//left 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x15:		//right 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x16:		//up 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x17:		//down 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x18:		//left 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x19:		//right 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x1A:		//lock 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x1B:		//lock 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x1D:		//channel 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x1F:		//channel 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					//l/s field
+					
 					break;
 				case 0x20:		//test 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+				  //gpio
+					GPIO_ResetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					
 					break;
 				case 0x21:		//test 4k
+						//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					
+				  //gpio
+					GPIO_ResetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					
 					break;
 				case 0x22:		//regulate 3k
+					//delete task
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_3);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_4|GPIO_Pin_5);
+					
 					break;
 				case 0x23:		//regulate 4k
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					//pwm
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					
 					break;
 				case 0x24:		//wireless
+					if( printf_xHandle != NULL ) {
+						vTaskDelete( printf_xHandle );
+					}
+					
+				  //gpio
+					GPIO_SetBits(GPIOA, GPIO_Pin_15);
+					GPIO_ResetBits(GPIOE, GPIO_Pin_1);
+					GPIO_SetBits(GPIOE, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5);
+					
 					break;
 				case 0xF0:		//uart send
 					xTaskCreate(Printf_task, "Printf", configMINIMAL_STACK_SIZE * 4, NULL, PRINTF_TASK_PRIO, &printf_xHandle);
